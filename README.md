@@ -1,6 +1,6 @@
-# Translator Project
+# FastAPITranslator
 
-This is a translator project built with FastAPI. It provides a web interface for translating text using the Google Translate API.
+This is a FastAPITranslator project built with FastAPI. It provides a web interface for translating text using the Google Translate API.
 
 ## Features
 
