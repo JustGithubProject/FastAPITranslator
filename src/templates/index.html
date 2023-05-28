@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Translation Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group select,
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .translation-result {
+            margin-top: 20px;
+            text-align: left;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .translation-result h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Переводчик</h1>
+        <form action="/translate" method="post">
+            <div class="form-group">
+                <textarea id="text" name="text" rows="4" cols="50"  style="resize: none;" placeholder="Введите текст"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="target_language">Выберите язык, на который вы хотите перевести.</label>
+                <select id="target_language" name="target_language">
+                    {% for language in languages %}
+                    <option value="{{ language }}">{{ language }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Перевести">
+            </div>
+        </form>
+        {% if translation %}
+        <div class="translation-result">
+            <p>{{ translation }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
